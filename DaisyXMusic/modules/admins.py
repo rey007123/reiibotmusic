@@ -42,7 +42,7 @@ async def update_admin(client, message: Message):
     await message.reply_text("❇️ Admin cache refreshed!")
 
 
-@Client.on_message(command("_jeda") & other_filters)
+@Client.on_message(command("jeda") & other_filters)
 @errors
 @authorized_users_only
 async def pause(_, message: Message):
@@ -52,12 +52,12 @@ async def pause(_, message: Message):
     ) if (
         callsmusic.pause(chat_id)
     ) else (
-        await message.reply_text("❗ AdaAda Lagu Yang Diputar Kok Dijeda🤦")
+        await message.reply_text("❗ Ndak Lagu Yang Diputar Kok Dijeda🥴")
     )
         
 
 
-@Client.on_message(command("_lanjut") & other_filters)
+@Client.on_message(command("lanjut") & other_filters)
 @errors
 @authorized_users_only
 async def resume(_, message: Message):
@@ -67,18 +67,18 @@ async def resume(_, message: Message):
     ) if (
         callsmusic.resume(chat_id)
     ) else (
-        await message.reply_text("Ndak Ada Lagu Di Putar Kok Lanjut🤦")
+        await message.reply_text("Ndak Ada Lagu DiPutar Kok Lanjut🥴")
     )
         
 
 
-@Client.on_message(command("_end") & other_filters)
+@Client.on_message(command("end") & other_filters)
 @errors
 @authorized_users_only
 async def stop(_, message: Message):
     chat_id = get_chat_id(message.chat)
     if chat_id not in callsmusic.active_chats:
-        await message.reply_text("Ndak Ada Lagu Yg Diputar Kok Di End. ")
+        await message.reply_text("Ndak Ada Lagu Yg Diputar Kok Di End🥴 ")
     else:
         try:
             queues.clear(chat_id)
@@ -86,17 +86,17 @@ async def stop(_, message: Message):
             pass
 
         await callsmusic.stop(chat_id)
-        await message.reply_text("Lanjut Dihentikan")
+        await message.reply_text("Musik Dihentikan🛑")
 
 
-@Client.on_message(command("_skip") & other_filters)
+@Client.on_message(command("skip") & other_filters)
 @errors
 @authorized_users_only
 async def skip(_, message: Message):
     global que
     chat_id = get_chat_id(message.chat)
     if chat_id not in callsmusic.active_chats:
-        await message.reply_text("Ndak Ada Lagu Yg Diputar")
+        await message.reply_text("Ndak Ada Lagu Yg Diputar🥴")
     else:
         queues.task_done(chat_id)
         if queues.is_empty(chat_id):
