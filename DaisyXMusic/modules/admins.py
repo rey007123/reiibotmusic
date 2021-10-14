@@ -63,7 +63,7 @@ async def pause(_, message: Message):
 async def resume(_, message: Message):
     chat_id = get_chat_id(message.chat)
     (
-        await message.reply_text("Lagu Diputar🟢)
+        await message.reply_text("Lagu Diputar🟢")
     ) if (
         callsmusic.resume(chat_id)
     ) else (
