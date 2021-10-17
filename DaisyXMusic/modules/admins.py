@@ -52,7 +52,7 @@ async def pause(_, message: Message):
     ) if (
         callsmusic.pause(chat_id)
     ) else (
-        await message.reply_text("❗ Ndak Lagu Yang Diputar Kok Dijeda🥴")
+        await message.reply_text("❗ Ndak ada Lagu Yang Diputar Kok Dijeda🥴")
     )
         
 
